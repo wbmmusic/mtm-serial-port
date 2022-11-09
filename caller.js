@@ -25,7 +25,11 @@ const runApp = (path) => {
 SerialPort.list()
     .then(list => {
         console.log(list)
-        const dev = list.find(d => d.serialNumber.includes("BOOT:"))
+        const dev = list.find(d => {
+            if (!d.serialNumber) return false
+            if (d.serialNumber.includes("BOOT:")) return true
+            return false
+        })
         if (!dev) throw new Error('Didnt find bootloader Device')
         runApp(dev.path)
     })
