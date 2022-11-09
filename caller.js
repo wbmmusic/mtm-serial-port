@@ -4,7 +4,7 @@ const { join, normalize } = require('node:path')
 const config = {
     port: 'COM7',
     baudRate: 115200,
-    pathToFile: join('C:', 'testfirm.bin').toString()
+    pathToFile: join(__dirname, 'testfirm.bin').toString()
 }
 
 const args = [new Buffer.from(JSON.stringify(config))]
