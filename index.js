@@ -287,7 +287,7 @@ const tryUpload = async(port) => {
 
 
 
-const port = new SerialPort({ path: "COM22", baudRate: 115200 })
+const port = new SerialPort({ path: config.path, baudRate: 115200 })
 port.on('open', async() => {
     tryUpload(port)
 })
