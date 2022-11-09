@@ -1,4 +1,5 @@
 const { SerialPort } = require('serialport')
+const { readFileSync } = require('node:fs')
 
 console.log('hello')
 console.log(process.argv)
