@@ -16,7 +16,7 @@ const runApp = (path) => {
 
     // const app = spawn('node', ['index.js', [...args]])
 
-    const fileName = "mtm-serial-port-win.exe"
+    let fileName = "mtm-serial-port-win.exe"
     if (platform() === "darwin") fileName = "mtm-serial-port-macos"
     const app = spawn(join("release", fileName), [...args])
 
