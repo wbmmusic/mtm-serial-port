@@ -3,11 +3,23 @@
     "version": "0.0.1",
     "main": "index.js",
     "license": "MIT",
+    "bin": "index.js",
     "dependencies": {
         "serialport": "^10.4.0"
     },
     "scripts": {
         "dev": "nodemon caller.js",
+        "build": "pkg .",
         "backup": "git add . && git commit -m %NPM_PACKAGE_VERSION% && git push origin main"
+    },
+    "pkg": {
+        "outputPath": "release",
+        "assets": [
+            "node_modules/@serialport/binding*/**/*"
+        ],
+        "targets": [
+            "node18-win-x64",
+            "node18-macos-x64"
+        ]
     }
 }

@@ -1,6 +1,9 @@
-const { spawn } = require('node:child_process')
+const { spawn, exec } = require('node:child_process')
 const { join } = require('node:path')
 const { SerialPort } = require('serialport')
+const { platform } = require("node:os")
+
+console.log(platform())
 
 const runApp = (path) => {
     const config = {
@@ -11,11 +14,16 @@ const runApp = (path) => {
 
     const args = [new Buffer.from(JSON.stringify(config))]
 
-    const app = spawn('node', ['index.js', [...args]])
+    // const app = spawn('node', ['index.js', [...args]])
+    const fileName = "mtm-serial-port-win.exe"
+    if (platform() === "darwin") fileName = "mtm-serial-port-macos"
+    const app = spawn(join("release", fileName), [...args])
 
     app.stdout.on('data', (data) => {
         console.log(data.toString())
     })
+
+    app.stderr.on('data', (data) => console.error(data.toString()))
 
     app.on('close', (code) => {
         console.log("Close code", code)
