@@ -8,7 +8,6 @@ console.log(platform())
 const runApp = (path) => {
     const config = {
         path: path,
-        baudRate: 115200,
         pathToFile: join(__dirname, 'testfirm.bin').toString()
     }
 
