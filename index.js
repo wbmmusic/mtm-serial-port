@@ -275,7 +275,6 @@ const upload = async(port, data) => {
     })
 }
 
-
 const tryUpload = async(port) => {
     try {
         const info = await upload(port, fileData)
