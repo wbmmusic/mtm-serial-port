@@ -5,7 +5,7 @@
     "license": "MIT",
     "bin": "index.js",
     "dependencies": {
-        "serialport": "^10.5.0"
+        "serialport": "^11.0.0"
     },
     "scripts": {
         "dev": "nodemon caller.js",
